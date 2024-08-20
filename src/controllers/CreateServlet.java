@@ -30,13 +30,10 @@ public class CreateServlet extends HttpServlet {
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String _token = request.getParameter("_token");
-
-        //CSRF対策のチェック（値がセットされていなかったりセッションIDと値が異なったりしたらデータの登録ができない）
+      //CSRF対策のチェック（値がセットされていなかったりセッションIDと値が異なったりしたらデータの登録ができない）
         if(_token != null && _token.equals(request.getSession().getId())) {
-            //データベース接続の確立
             EntityManager em = DBUtil.createEntityManager();
             em.getTransaction().begin();
 
@@ -48,7 +45,7 @@ public class CreateServlet extends HttpServlet {
             String content = request.getParameter("content");
             m.setContent(content);
 
-            //現在日時の情報を持つ日付型のオブジェクトを取得
+          //現在日時の情報を持つ日付型のオブジェクトを取得
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
             m.setCreated_at(currentTime);
             m.setUpdated_at(currentTime);
