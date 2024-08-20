@@ -32,7 +32,7 @@ public class NewServlet extends HttpServlet {
         // CSRF対策（セキュリティ対策）
         request.setAttribute("_token", request.getSession().getId());
 
-        // おまじないとしてのインスタンスを生成
+        // おまじないとしてのインスタンスを生成。文字数０のデータをフォームに渡す
         request.setAttribute("message", new Message());
 
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/messages/new.jsp");

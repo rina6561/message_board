@@ -8,7 +8,7 @@
             <c:forEach var="message" items="${messages}">
                 <li>
                     <a href="${pageContext.request.contextPath}/show?id=${message.id}">
-                        <c:out value="${message.id}" />
+                        <c:out value="${message.id}" /> <!-- 自動的に /message_board というコンテキストパスの文字列に置き換える -->
                     </a>
                     ：<c:out value="${message.title}"></c:out> &gt; <c:out value="${message.content}" />
                 </li>

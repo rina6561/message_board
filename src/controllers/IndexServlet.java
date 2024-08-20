@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import models.Message;
 import utils.DBUtil;
 
+//サーブレットのコントローラ
 /**
  * Servlet implementation class IndexServlet
  */
@@ -33,10 +34,13 @@ public class IndexServlet extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //データベース接続の確立
         EntityManager em = DBUtil.createEntityManager();
 
+        //getAllMesagesを実行し、Messageクラスのすべてのインスタンスをデータベースから取得し、messagesリストに格納
         List<Message> messages = em.createNamedQuery("getAllMessages", Message.class).getResultList();
 
+        //データベースとの接続を閉じる
         em.close();
 
         request.setAttribute("messages",messages);

@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+//DAO（SQL実行するクラス）
 public class DBUtil {
     private static final String PERSISTENCE_UNIT_NAME = "message_board";
     private static EntityManagerFactory emf;

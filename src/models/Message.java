@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 
 @Entity
+// indexで一覧表示するデータを取得するためのJPQL
 @NamedQueries({
     @NamedQuery(
         name = "getAllMessages",
